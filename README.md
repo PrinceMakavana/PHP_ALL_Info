@@ -200,6 +200,18 @@ echo 'the time now is' . $modify;
 echo $date;
 ```
 
+## Session
+
+            start session : session();
+            set session : $_SESSION['key']
+            unset any session : unset($_SESSION['key']);
+            destroy all session : session_destroy();
+
+## Cookies
+
+            - set Cookies : setcookie('key' , 'value' , time()+YOUR_TIME)
+            - After Time End Cookies Automatic Deleted
+
 ## OOP With Php
 
 - M - Model
