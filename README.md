@@ -58,6 +58,20 @@
         Null
         Resource
 
+## Types Of Operators
+
+---
+
+    1) Arithmetic Operators : + , - , / , % , ++ , --
+    2) Increment Operators : ++
+    3) Decrement Operator : --
+    4) Assignment Operators : ++ , -- , += , =+ , -= , =- , *= , %= , /=
+    5) Relational Operators : > , < , >= , <= , >== , !=
+    6) Logical Operators : && , ||
+    7) Conditional Operator : == , != , === , < , > , <= , >=
+    8) Bitwise Operator : & , | , ~ , ^
+    9) Misc operators : ?: , * ,  &
+
 ## XML in PHP
 
 ---
@@ -153,21 +167,6 @@
                 --ASSOCIATIVE ARRAYS--
                 foreach($var as $key => $value ){...Content...}
 
-## Conditional Parameters
-
-        ==      => check equal
-        !=      => check not equal
-        ===     => check Extra equal (with datatype)
-        <       => grater then
-        >       => Less then
-        <=      => grater then equal
-        =>      => less then equal
-        !==     => check extra not equal
-
-        Logical Operators
-                && and
-                || or
-
 ## Functions
 
             Function Name Style
@@ -184,6 +183,22 @@
                 functionName(parameter);
 
 ## Date and TimeStamp
+
+      time()
+      indian_time_zone : date_default_timezone_set("Asia/Calcutta");
+      date('D M Y @ H:i:s', $time);
+      D : Day , M : Month Name , Y : Year No.
+      d : date , m : month no. ,   Y : Year No. Last Two Latter
+      H : hour , i : minute , s : second
+      A : AM/PM
+
+```sh
+$time = time();
+$date = date('d m y  @ h:i:s A', $time);
+$modify = date('d M Y @ H:i:s', strtotime('-1 Week'));
+echo 'the time now is' . $modify;
+echo $date;
+```
 
 ## OOP With Php
 
@@ -263,7 +278,7 @@ class Person
 ```sh
         <?php
         spl_autoload_register('myAutoLoader');
-        
+
         function myAutoLoader($className)
         {
             $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
