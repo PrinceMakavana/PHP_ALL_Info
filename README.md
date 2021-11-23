@@ -202,15 +202,140 @@ echo $date;
 
 ## Session
 
-            start session : session();
-            set session : $_SESSION['key']
-            unset any session : unset($_SESSION['key']);
-            destroy all session : session_destroy();
+    start session : session_start();
+    set session : $_SESSION['key'] = value ;
+    unset any session : unset($_SESSION['key']);
+    destroy all session : session_destroy();
 
 ## Cookies
 
-            - set Cookies : setcookie('key' , 'value' , time()+YOUR_TIME)
-            - After Time End Cookies Automatic Deleted
+    - set Cookies : setcookie('key' , 'value' , time()+YOUR_TIME)
+    - After Time End Cookies Automatic Deleted
+
+## File Management
+
+    - W - Write : it is write from start and erase old details
+    - A - Append :  it is write at the emd of file and not erase old details
+    - R - Read : Read File
+
+<fieldset>
+	<legend>File Function</legend> 
+	<table>
+		<tr><td>Open File</td><td><b>$var = fopen('filename' , 'operation(r,w,a)');</b></td></tr>
+		<tr><td>Close File</td><td><b>fclose($var);</b></td></tr>
+		<tr><td>Write into File</td><td><b>fwrite($var, 'Text , What you want to add');</b></td></tr>
+		<tr><td>Read File</td><td><b>file('fileName');</b></td></tr>
+	</table>
+</fieldset>
+
+<fieldset>
+	<legend>Note</legend> 
+	<table>
+		<tr><td>If File Not Exist in Directory then Automatically it creates new File </td></tr>
+	</table>
+</fieldset>
+
+```sh
+    //Write in file with Append (if you want to only write then change 'a' with 'w')
+    $handle = fopen('temp.txt', 'a');
+    $fwrite = fwrite($handle, $text . "\n");
+    fclose($handle);
+
+    //Read File : it give in array
+    $read = file('temp.txt');
+```
+
+<br>
+
+- Check File Exists
+
+```sh
+
+    $fileName = 'tem.txt';
+    if (file_exists($fileName)) {
+        echo 'File Exists';
+    } else {
+        $handle = fopen($fileName, 'w');
+        fwrite($handle, '');
+        fclose($handle);
+        echo "New File created";
+    }
+```
+
+<br>
+
+- Delete File
+
+```sh
+
+    $fileName = 'tem.txt';
+    if (@unlink($fileName)) {
+        echo 'Your file <strong>' . $fileName . '</strong> has been deleted';
+    } else {
+        echo 'Your file <strong>' . $fileName . '</strong> Not Found';
+    }
+
+```
+
+## Implode & Explode Function
+
+- <b>Explode</b> : It is Used For make string to array<br>
+- <b>Implode</b> : It is Used For make array to string
+
+<fieldset>
+	<legend>Explode Function</legend> 
+	<table>
+		<tr><td>$var = explode('brake point' , $string)</td></tr>
+	</table>
+</fieldset>
+
+<fieldset>
+	<legend>Implode Function</legend> 
+	<table>
+		<tr><td>$var = implode('join_with' , $array)</td></tr>
+	</table>
+</fieldset>
+<br>
+
+## Connect Database and Retrieve Data
+<br>
+
+```sh
+<?php
+$server = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'demo';
+
+@$connect = mysqli_connect($server, $username, $password, $database);
+
+    if (mysqli_connect_errno()) {
+        die("<b style=\"color:red;\">Database Connection Not Establish</b>");
+    }
+
+    $query = 'SELECT * FROM user';
+    $result = mysqli_query($connect, $query);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    echo '<pre>';
+    print_r($data);
+    echo '</pre>';
+    mysqli_free_result($result);
+    mysqli_close($connect);
+```
+<br>
+
+<fieldset>
+	<legend>Basic Query</legend> 
+	<table>
+		<tr><td><b>SELECT DATA</b></td><td>SELECT * FROM TABLE_NAME ;</td></tr>
+		<tr><td><b>INSERT DATA</b></td><td>INSERT INTO TABLE_NAME(ROW_NAME) VALUES (VALUES);</td></tr>
+		<tr><td><b>UPDATE DATA</b></td><td>UPDATE TABLE_NAME SET column1=value, column2=value2,... WHERE Condition ;</td></tr>
+		<tr><td><b>DELETE DATA</b></td><td>DELETE FROM TABLE_NAME WHERE Condition ;</td></tr>
+	</table>
+</fieldset>
+
+<br>
+<br>
 
 ## OOP With Php
 
